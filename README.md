@@ -1,7 +1,7 @@
 # Make-It-Convenient
 
 ## Description:
-It is a convertion website that used flask framework to create. Normally when I want to donwload a youtube video for my school project I have to use website online which do raise some of my concern when google said that the site is not really trust worthy and it kinda hard to find website which is 100 percent secure so I make this all in one tools instead so here the function of its
+It is a convertion website that used flask framework to create. Normally when I want to donwload a youtube video for my school project I have to use website online which do raise some of my concern when google said that the site is not really trust worthy and it kinda hard to find website which is 100 percent secure so I make this all in one tools instead so here the function of its.
 ## Function:
 1. **Youtube link to mp3/mp4**
 2. **Mp4 convertion to Mp3**
