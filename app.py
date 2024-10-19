@@ -17,18 +17,18 @@ from typing import Optional
 import os
 from pytubefix import YouTube
 
-class CustomYouTube:
-    def __init__(self, url):
-        self.url = url
-        self.po_token = os.getenv('PO_TOKEN')
-        self.visitor_data = os.getenv('VISITOR_DATA')
+class CustomYouTube(YouTube):
+    def __init__(self, url, **kwargs):
+        po_token = os.getenv("PO_TOKEN")
+        visitor_data = os.getenv("VISITOR_DATA")
+        
+        def po_token_verifier():
+            return visitor_data, po_token
 
-        self.youtube_instance = YouTube(
-            url=self.url,
-            use_po_token=True,
-            po_token=self.po_token,
-            visitor_data=self.visitor_data,
-        )
+        super().__init__(url, po_token_verifier=po_token_verifier, **kwargs)
+
+        self.po_token = po_token
+        self.visitor_data = visitor_data
 
 
 _default_clients["ANDROID"]["context"]["client"]["clientVersion"] = "19.08.35"
@@ -140,7 +140,7 @@ def convert():
     link = request.form.get("link")
     
     try:
-        yt = CustomYouTube(link) 
+        yt = CustomYouTube(link, use_po_token=True) 
         final_path = None
 
         if convert_type == "mp3":
