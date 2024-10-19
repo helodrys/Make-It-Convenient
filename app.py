@@ -13,6 +13,23 @@ import re
 from pytube.exceptions import RegexMatchError
 from moviepy.editor import VideoFileClip, AudioFileClip
 import subprocess
+from typing import Optional
+import os
+from pytubefix import YouTube
+
+class CustomYouTube:
+    def __init__(self, url):
+        self.url = url
+        self.po_token = os.getenv('PO_TOKEN')
+        self.visitor_data = os.getenv('VISITOR_DATA')
+
+        self.youtube_instance = YouTube(
+            url=self.url,
+            use_po_token=True,
+            po_token=self.po_token,
+            visitor_data=self.visitor_data,
+        )
+
 
 _default_clients["ANDROID"]["context"]["client"]["clientVersion"] = "19.08.35"
 _default_clients["IOS"]["context"]["client"]["clientVersion"] = "19.08.35"
@@ -123,7 +140,7 @@ def convert():
     link = request.form.get("link")
     
     try:
-        yt = YouTube(link)
+        yt = CustomYouTube(link, use_po_token=True) 
         final_path = None
 
         if convert_type == "mp3":
