@@ -17,8 +17,8 @@ from typing import Optional
 import os
 from pytubefix import YouTube
 
-os.environ["PO_TOKEN"] = "MnSxhvwIX5xFTrG-6DM0A0EVNq3eaGnP8ALaumrJHlSCKyNKyr9yNTD9uxUpqC7pxtbui3BdMsakedSWdjX_vg3tFg7YXiMrPIXEBwWcUqLB5CAXURTG2k0qN1kgY4a3r2Gg4E5XxYF-R9noWe-OHQ7SNQPSPA=="
-os.environ["VISITOR_DATA"] = "CgttazlZSUJyb2ZSSSj6rs-4BjIKCgJUSBIEGgAgPQ%3D%3D"
+po_token = os.getenv("PO_TOKEN")
+visitor_data = os.getenv("VISITOR_DATA")
 
 _default_clients["ANDROID"]["context"]["client"]["clientVersion"] = "19.08.35"
 _default_clients["IOS"]["context"]["client"]["clientVersion"] = "19.08.35"
@@ -129,7 +129,7 @@ def convert():
     link = request.form.get("link")
     
     try:
-        yt = YouTube(link, use_po_token=True, po_token_verifier=(os.environ["PO_TOKEN"],os.environ["VISITOR_DATA"])) 
+        yt = YouTube(link, use_po_token=True, po_token_verifier=(po_token,visitor_data)) 
         
         final_path = None
 
