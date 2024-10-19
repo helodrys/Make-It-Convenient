@@ -123,13 +123,15 @@ def convert_qrcode():
 def qr_code():
     return render_template("qrcode.html")
 
+def my_po_token():
+    return (po_token, visitor_data)
 @app.route("/convert", methods=["POST"])
 def convert():
     convert_type = request.form.get("converter")
     link = request.form.get("link")
     
     try:
-        yt = YouTube(link, use_po_token=True, po_token_verifier=(po_token,visitor_data)) 
+        yt = YouTube(link, use_po_token=True, po_token_verifier= my_po_token) 
         
         final_path = None
 
