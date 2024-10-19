@@ -140,7 +140,7 @@ def convert():
     link = request.form.get("link")
     
     try:
-        yt = CustomYouTube(link, use_po_token=True) 
+        yt = CustomYouTube(link) 
         final_path = None
 
         if convert_type == "mp3":
