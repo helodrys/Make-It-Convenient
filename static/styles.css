@@ -1,0 +1,74 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    align-items: center;
+    justify-content: center;
+    background-color: #f0f0f0;
+}
+
+.navbar {
+    background-color: #ffad15e4;
+}
+
+.navbar-brand, .nav-link {
+    color: white !important;
+}
+
+.nav-link:hover {
+    color: #ddd;
+}
+.logo {
+    text-align: center;
+}
+.logo-word {
+    font-family: "Radio Canada Big";
+    font-weight: bold;
+    text-decoration: underline;
+    -webkit-text-stroke: 2px black;
+    color: red;
+    font-size: 5rem;
+}
+h1 {
+    font-size: 2rem;
+    color: #333;
+    margin: 0;
+}
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.submit-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+label {
+    font-size: 20px;
+}
+
+.link-input {
+    margin: 10px;
+}
+.bro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px
+}
+@media (max-width: 768px) {
+    h1 {
+        font-size: 1rem;
+    }
+    .logo-word {
+        font-size: 2.7rem;
+    }
+    .navbar-brand, .nav-link {
+        font-size: 1rem;
+    }
+}
