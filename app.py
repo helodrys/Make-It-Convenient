@@ -15,7 +15,6 @@ from moviepy.editor import VideoFileClip, AudioFileClip
 import subprocess
 from typing import Optional
 import os
-from pytubefix import YouTube
 
 po_token = os.getenv("PO_TOKEN")
 visitor_data = os.getenv("VISITOR_DATA")
