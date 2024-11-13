@@ -16,8 +16,8 @@ import subprocess
 from typing import Optional
 import os
 
-po_token = os.getenv("PO_TOKEN")
-visitor_data = os.getenv("VISITOR_DATA")
+# po_token = os.getenv("PO_TOKEN")
+# visitor_data = os.getenv("VISITOR_DATA") At this point what's the point lmao youtube too good
 
 _default_clients["ANDROID"]["context"]["client"]["clientVersion"] = "19.08.35"
 _default_clients["IOS"]["context"]["client"]["clientVersion"] = "19.08.35"
@@ -122,15 +122,16 @@ def convert_qrcode():
 def qr_code():
     return render_template("qrcode.html")
 
-def my_po_token():
-    return (po_token, visitor_data)
+def change_filename_e(filename):
+    return re.sub(r'[<>:"/\\|?*]', '_', filename)
 @app.route("/convert", methods=["POST"])
+
 def convert():
     convert_type = request.form.get("converter")
     link = request.form.get("link")
     
     try:
-        yt = YouTube(link, use_po_token=True, po_token_verifier= my_po_token) 
+        yt = YouTube(link) 
         
         final_path = None
 
@@ -146,7 +147,8 @@ def convert():
                 audio_stream = yt.streams.filter(only_audio=True).first()
                 audio_path = audio_stream.download(output_path="downloads", filename=f"{yt.title}_audio.mp4")
                 #ffmpeg is 10x faster than moviepy fr
-                final_path = f"downloads/{yt.title}_final.mp4"
+                title = yt.title
+                final_path = f"downloads/{change_filename_e(title)}_final.mp4"
                 subprocess.run([
                     'ffmpeg',
                     '-i', video_path,
