@@ -6,7 +6,7 @@ It is a convertion website that used flask framework to create. Normally when I 
 1. **Youtube link to mp3/mp4**
 2. **Mp4 convertion to Mp3**
 3. **Link to Qrcode**
-
+ $ flask --app example --debug run
 
 This project also use ffmpeg for the mp4 conversion because pytube with highest resolution won't give audio with the video so I have to merge them together!
 Hope you like it!
